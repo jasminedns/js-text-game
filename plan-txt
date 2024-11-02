@@ -1,0 +1,62 @@
+GODKÄNT
+    - One or more constants
+    - One or more arrays
+    - A random selction of an array index
+    - A dynamic assignment of a variable (ie using prompt)
+    - One or more while loops
+    - One or more for loops
+    - Comparision with user entered data
+    - A final won/lost message. User input !!MUST!! be the
+        determining factor in wheter the user wins or loses
+
+VÄLGODKÄNT
+    - Comparision with an array -- ie comparing user input to
+        what is stored within an array
+    - Nested logic. Loops withing loops.
+    - Input validation (ex only letters are valid input)
+    - Cancel button handling
+    - Semantic variable naming
+    - Consistent code style
+    - Logical use of conditionals
+
+IDEA
+    Making a Dungeons and Dragons game. The user will have
+    its "health bar" inside the alert and previous rolls too.
+    The user clicks on confirm button to roll the dice, the 
+    alert will show how much he rolled and what happens (ex. 
+    can be "Roll to see if you can attack first and if the
+    roll is between 1-10 the answer is no, higher is yes"). 
+    If user ex doesn't attack first, put a random number of
+    damage and get it subtracted from the health bar. Next
+    the user will type if they want to ATTACK, DRINK A HEALTH
+    BOTTLE, FLEE or REASONATE WITH ENEMY. When they choose
+    and press confirm, another roll should start to see how
+    effective these things will be. The enemy bar should also
+    be displayed. 
+    If reasonate with enemy is true: roll the dice and again
+    the result will determine what happens. (thought// if they
+    roll 1-10 the alert shows that the user said something bad
+    about the enemy's mom and the enemy will attack, again show
+    both health bars and reprise of fight). If 10-20 user 
+    resonates with the enemy and they leave together holding 
+    hands under a sunny sky and a rainbow.
+    If flee is true, another roll: 1-10 user cannot flee, enermy
+    grabs them by the hair and attacks user causing double damage.
+    Battle will go on from there. If 10-20, user runs away as a
+    Pamela Anderson's slow motion in Baywatch.
+    If health bottle is true, another roll: if 1-10 the user 
+    takes poison istead of health and loses health. if 10-20,
+    health bar is increased.
+    If attack is true: user will roll and the result of the 
+    roll will determine how powerful the attack is. 1-10 user
+    tries to melee the enemy but stumbles before they do (not
+    very effective). If 10-20, user grabs sword and gets a 
+    good attack on the enemy.
+    When enemy's health bar <= 0 and user's > 0: user wins. (
+    try to include that if the user has so little health, they
+    die on the path to the nearest hospital).
+    When user's health bar <=0 and enemy's > 0: user loses and
+    enemy starts a fire to eat its body.
+
+
+    
