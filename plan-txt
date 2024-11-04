@@ -11,7 +11,7 @@ GODKÄNT
 
 VÄLGODKÄNT
     - Comparision with an array -- ie comparing user input to
-        what is stored within an array
+        what is stored within an array --> make the user choose a weapon or character through an input, or roll the dice to assign the user a weapon
     - Nested logic. Loops withing loops.
     - Input validation (ex only letters are valid input)
     - Cancel button handling
