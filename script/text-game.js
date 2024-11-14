@@ -38,7 +38,7 @@ alert(`                                             The titan's fall
 
 alert(`So... Where were we? Yes... Nestled deep within the ancient Whispering Woods, the village of Timberbrook is a settlement known for its hardworking inhabitants.
     As I said previously, the village is surrounded by the Whispering Woods: a forest both beautiful and treacherous. Legends say that the deeper one ventures into the woods, the darker and more ominous it becomes.
-    Lately, a sense of dread has settled over Timberbrook. An ogre, known as Drug has taken up residence in a cave not far from the village. He has been terrorizing the villagers, attacking anyone who strays too far from the safety of the village and even venturing into Timberbrook to wreak havoc.`)
+    Lately, a sense of dread has settled over Timberbrook. An ogre, known as Druk has taken up residence in a cave not far from the village. He has been terrorizing the villagers, attacking anyone who strays too far from the safety of the village and even venturing into Timberbrook to wreak havoc.`)
 alert(`The village elder, a wise and respected figure named Elara, has called upon brave adventurers to rid Timberbrook of this menace. You were the chosen one. She decides to tell the village that they have a brave hero ready to slay the monster that has been terrorizing the village.
     Elara says: “Our beloved village is in grave danger. The ogre has already claimed the lives of several villagers, and his attacks grow bolder by the day. Our hero is ready to venture into the Whispering Woods, find his lair, and put an end to his reign of terror.”`)
 
@@ -142,6 +142,7 @@ while (!winner) {
 
                         while (userFleeChoice !== "YES" && userFleeChoice !== "NO") {
                             alert("Invalid input. Type yes or no please.");
+                            userFleeChoice = prompt("Do you want to flee? (yes or no)").toUpperCase();
                         }
 
                         if (userFleeChoice === "YES") {
@@ -176,7 +177,7 @@ while (!winner) {
 
                     }
                     break;
-////////////////////////////////////////////////////////////
+
                 case "CHAT":
                     if (userRoll <= 10) {
                         alert(`Well... at least you tried, right? You rolled a ${userRoll}... You try to resonate with the ogre but you unconsciously say something about his mother. He then grabs you and throws you against a tree. 
