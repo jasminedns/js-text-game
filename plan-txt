@@ -1,23 +1,23 @@
 GODKÄNT
-    - One or more constants
-    - One or more arrays
-    - A random selection of an array index
-    - A dynamic assignment of a variable (ie using prompt)
-    - One or more while loops
-    - One or more for loops
-    - Comparision with user entered data
+    - One or more constants DONE
+    - One or more arrays DONE
+    - A random selection of an array index DONE
+    - A dynamic assignment of a variable (ie using prompt) DONE
+    - One or more while loops DONE
+    - One or more for loops DONE
+    - Comparision with user entered data DONE
     - A final won/lost message. User input !!MUST!! be the
-        determining factor in wheter the user wins or loses
+        determining factor in wheter the user wins or loses DONE
 
 VÄLGODKÄNT
     - Comparision with an array -- ie comparing user input to
-        what is stored within an array --> make the user choose a weapon or character through an input, or roll the dice to assign the user a weapon
-    - Nested logic. Loops withing loops.
-    - Input validation (ex only letters are valid input)
+        what is stored within an array --> make the user choose a weapon or character through an input, or roll the dice to assign the user a weapon DONE
+    - Nested logic. Loops withing loops. DONE
+    - Input validation (ex only letters are valid input) 
     - Cancel button handling
-    - Semantic variable naming
-    - Consistent code style
-    - Logical use of conditionals
+    - Semantic variable naming DONE
+    - Consistent code style DONE
+    - Logical use of conditionals DONE
 
 IDEA
     Making a Dungeons and Dragons game. The user will have
