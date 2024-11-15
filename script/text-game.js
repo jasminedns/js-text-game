@@ -2,6 +2,7 @@ let userHealth = 20;
 let ogreHealth = 20;
 let rolls = [];
 let heroes = ["PALADIN", "WIZARD", "ROGUE", "BARBARIAN"]
+let weapons = ["Longsword", "Battleaxe", "Shortbow", "Warhammer", "Dagger"]
 const MINOR_DAMAGE = 2;
 const MAJOR_DAMAGE = 4;
 let winner = false;
@@ -99,6 +100,9 @@ alert(`The village elder, a wise and respected figure named Elara, has called up
             Description: Bruna is a fierce barbarian with unmatched strength and resilience. When she enters a rage, she can deal massive damage to Gruk and withstand his attacks. Her intimidating presence can also demoralize the ogre.`)
     }
     
+    alert(`Let's now choose your weapon! (It will be assigned randomly)`)
+    let randomWeapon = Math.floor(Math.random() * weapons.length)
+    alert(`You were assigned a ${weapons[randomWeapon]}! Now that everything's set, let's dive into the story!`)
 
 
 alert(`You venture into the forest knowing that your village counts on you and your excellent ability even though you're not too sure of what awaits for you or what you can do to defeat the ogre. 
