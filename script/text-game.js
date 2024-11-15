@@ -1,12 +1,12 @@
-let userHealth = 20;
-let ogreHealth = 20;
-let rolls = [];
-let heroes = ["PALADIN", "WIZARD", "ROGUE", "BARBARIAN"]
-let weapons = ["Longsword", "Battleaxe", "Shortbow", "Warhammer", "Dagger"]
 const MINOR_DAMAGE = 2;
 const MAJOR_DAMAGE = 4;
-let winner = false;
+let heroes = ["PALADIN", "WIZARD", "ROGUE", "BARBARIAN"]
+let ogreHealth = 20;
+let rolls = [];
+let userHealth = 20;
 let userHero;
+let weapons = ["longsword", "battleaxe", "shortbow", "warhammer", "dagger"]
+let winner = false;
 
 const characterSheet = (sheet) => {
     return userHero.toUpperCase() === heroes[sheet]
@@ -22,10 +22,10 @@ const rollAndSave = () => {
     rolls.unshift(userRoll);
 }
 
-const healthBar = () => {
+const sneakAttack = () => {
     if (userRoll <= 10) {
-        alert(`You rolled a ${userRoll}... You sneak behind the ogre, ready to use your knife and kill him but while you're walking behind him, you step on a tree branch. The ogre hears you, turns around and sees you holding your knife and says: "HAHAHAHAHAHA that's not a knoife", he then grabs his, looks at you and says: "That's a knoife".
-        Before you can react, the ogre’s massive knoife comes down towards you. You try to dodge, but the knife catches you on the shoulder! You can hear the ogre laughing at you and then he says: "Next time, bring a real knoife mate." 
+        alert(`You rolled a ${userRoll}... You sneak behind the ogre, ready to use your knife and kill him but while you're walking behind him, you step on a tree branch. The ogre hears you, turns around, sees you holding your knife and says: "HAHAHAHAHAHA that's not a knoife", he then grabs his, looks at you and says: "That's a knoife".
+        Before you can react, the ogre’s massive knife comes down towards you. You try to dodge, but the knife catches you on the shoulder! You can hear the ogre laughing at you and then he says: "Next time, bring a real knoife mate." 
         The fight starts! Your health: ${userHealth -= MINOR_DAMAGE}/20 -- Ogre's health: ${ogreHealth}/20`)
     } else {
         alert(`You rolled a ${userRoll}! With a determined glint in your eye, you grip your weapon tightly and charge at the ogre. You aim for its big ugly face. The ogre stumbles backward, clutching its face and shouts: "OW!!! My nose! Do you even know how hard it is to find a good ogre plastic surgeon?"
@@ -105,7 +105,7 @@ alert(`The village elder, a wise and respected figure named Elara, has called up
         }
     }
     
-alert(`Let's now choose your weapon! (It will be assigned randomly)`)
+alert(`Let's now choose your weapon! (It will be assigned randomly between: ${weapons.join(", ")})`)
 let randomWeapon = Math.floor(Math.random() * weapons.length)
 alert(`You were assigned a ${weapons[randomWeapon]}! Now that everything's set, let's dive into the story!`)
 
@@ -115,11 +115,11 @@ alert(`You venture into the forest knowing that your village counts on you and y
 
 rollAndSave();
 
-healthBar();
+sneakAttack();
 
 while (!winner) {
     if (userHealth > 0 && ogreHealth > 0) {
-        let userAction = prompt(`Type ATTACK (to attack), FLEE (to leave the fight) or CHAT (to resonate with the ogre). After each action the dice will roll and we'll see what happens. 
+        let userAction = prompt(`Type ATTACK, FLEE (to leave the fight) or CHAT (to resonate with the ogre). After each action the dice will roll and we'll see what happens. 
         Your rolls (most recent first): ${rolls.join(", ")}.
         Your health: ${userHealth} -- ogre's health: ${ogreHealth}`)
 
@@ -130,7 +130,7 @@ while (!winner) {
         
         while (!isValidAction(userAction)) {
             alert("Invalid input. Choose a valid option!")
-            userAction = prompt(`Type ATTACK (to attack), FLEE (to leave the fight) or CHAT (to resonate with the ogre). After each action the dice will roll and we'll see what happens. 
+            userAction = prompt(`Type ATTACK, FLEE (to leave the fight) or CHAT (to resonate with the ogre). After each action the dice will roll and we'll see what happens. 
                 Your rolls (most recent first): ${rolls.join(", ")}.
                 Your health: ${userHealth} -- ogre's health: ${ogreHealth}`)
         }
@@ -146,7 +146,7 @@ while (!winner) {
                         if (ogreHealth < 0) ogreHealth = 0; 
                     } else {
                         alert(`Yes! You rolled a ${userRoll}! You leap into the air, aiming for its head. Your weapon gets the ogre right on his forehead. The ogre stumbles backwards as you grin from ear to ear and shout: "Sorry big guy, but I think it's time to put you to sleep. Go get your safety blanket!" 
-                        Your health: ${userHealth}/20 -- Ogre's health: ${ogreHealth -= MAJOR_DAMAGE}/20`);
+                        Your health: ${userHealth}/20 -- Ogre's health: ${ogreHealth -= MINOR_DAMAGE}/20`);
                         if (ogreHealth < 0) ogreHealth = 0;
                     }
                     break;
@@ -207,6 +207,7 @@ while (!winner) {
                         if (userHealth < 0) userHealth = 0; 
                     } else {
                         alert(`Yes! You rolled a ${userRoll}! Your words strike a chord with the ogre, and tears begin to stream down his rugged face. Moved by his remorse, you persuade him to accompany you to the village, where he can seek forgiveness for his past actions. However, upon hearing his confession, the villagers, driven by fear and anger, take matters into their own hands and end his life. Rest in peace, fallen ogre.`);
+                        alert(`Congrats, you won! (kinda)`)
                         winner = true;
                     }
                     break;
