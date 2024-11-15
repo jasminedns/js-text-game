@@ -32,6 +32,12 @@ const healthBar = () => {
     }
 }
 
+const cancelGame = () => {
+    if (!confirm()) {
+        alert(`Oh c'mon maaan! It's a good game! Fine. Bye.`)
+    }
+}
+
 alert(`                                             The titan's fall
     Are you ready to fight and slay the ogre that has been killing people around your town? 
     Here's how it'll work: every time you choose to do something, the computer will roll a 20 sided dice.. Just hope to get 10 or more and you'll be fine.`)
@@ -49,47 +55,49 @@ alert(`The village elder, a wise and respected figure named Elara, has called up
         alert(`Please choose a valid option.`)
         userHero = prompt(`Who do you want to be? Choose your hero!
             ${heroes.join(", ")}`).toUpperCase()
-    }   if (characterSheet(0)) {
-            alert(`You chose: 
-                Name: Sir Cedric the Brave
-                Class: Paladin
-                Race: Human
-                Background: Noble
-                Abilities: High Strength and Charisma
-                Equipment: Longsword, Shield, Chain Mail
-                Special Abilities: Divine Smite, Lay on Hands
-                Description: Sir Cedric is a valiant knight dedicated to protecting the innocent. His divine powers allow him to deal extra radiant damage to Gruk, and his healing abilities can keep him in the fight.`)
-        } else if (characterSheet(1)) {
-            alert(`You chose:
-                Name: Elara the Wise
-                Class: Wizard
-                Race: Elf
-                Background: Sage
-                Abilities: High Intelligence and Dexterity
-                Equipment: Spellbook, Staff
-                Special Abilities: Fireball, Shield, Magic Missile
-                Description: Elara is a knowledgeable wizard with a vast array of spells at her disposal. Her powerful offensive spells can deal significant damage to Gruk, while her defensive spells can protect her from harm.`)
-        } else if (characterSheet(2)) {
-            alert(`You chose:
-                Name: Darpas the Starving one
-                Class: Rogue
-                Race: Halfling
-                Background: Criminal
-                Abilities: High Dexterity and Wisdom
-                Equipment: Daggers, Thieves' Tools, Leather Armor
-                Special Abilities: Sneak Attack, Evasion
-                Description: Darpas is a stealthy rogue who excels at striking from the shadows. His ability to deal extra damage with sneak attacks makes him a formidable opponent for Gruk, and his agility allows him to avoid the ogre's powerful blows.`)
-        } else {
-            alert (`You chose:
-                Name: Bruna the Bold
-                Class: Barbarian
-                Race: Half-Orc
-                Background: Outlander
-                Abilities: High Strength and Constitution
-                Equipment: Greataxe, Javelins, Hide Armor
-                Special Abilities: Rage, Reckless Attack
-                Description: Bruna is a fierce barbarian with unmatched strength and resilience. When she enters a rage, she can deal massive damage to Gruk and withstand his attacks. Her intimidating presence can also demoralize the ogre.`)
-        }
+    }   
+    
+    if (characterSheet(0)) {
+        alert(`You chose: 
+            Name: Sir Cedric the Brave
+            Class: Paladin
+            Race: Human
+            Background: Noble
+            Abilities: High Strength and Charisma
+            Equipment: Longsword, Shield, Chain Mail
+            Special Abilities: Divine Smite, Lay on Hands
+            Description: Sir Cedric is a valiant knight dedicated to protecting the innocent. His divine powers allow him to deal extra radiant damage to Gruk, and his healing abilities can keep him in the fight.`)
+    } else if (characterSheet(1)) {
+        alert(`You chose:
+            Name: Elara the Wise
+            Class: Wizard
+            Race: Elf
+            Background: Sage
+            Abilities: High Intelligence and Dexterity
+            Equipment: Spellbook, Staff
+            Special Abilities: Fireball, Shield, Magic Missile
+            Description: Elara is a knowledgeable wizard with a vast array of spells at her disposal. Her powerful offensive spells can deal significant damage to Gruk, while her defensive spells can protect her from harm.`)
+    } else if (characterSheet(2)) {
+        alert(`You chose:
+            Name: Darpas the Starving one
+            Class: Rogue
+            Race: Halfling
+            Background: Criminal
+            Abilities: High Dexterity and Wisdom
+            Equipment: Daggers, Thieves' Tools, Leather Armor
+            Special Abilities: Sneak Attack, Evasion
+            Description: Darpas is a stealthy rogue who excels at striking from the shadows. His ability to deal extra damage with sneak attacks makes him a formidable opponent for Gruk, and his agility allows him to avoid the ogre's powerful blows.`)
+    } else {
+        alert (`You chose:
+            Name: Bruna the Bold
+            Class: Barbarian
+            Race: Half-Orc
+            Background: Outlander
+            Abilities: High Strength and Constitution
+            Equipment: Greataxe, Javelins, Hide Armor
+            Special Abilities: Rage, Reckless Attack
+            Description: Bruna is a fierce barbarian with unmatched strength and resilience. When she enters a rage, she can deal massive damage to Gruk and withstand his attacks. Her intimidating presence can also demoralize the ogre.`)
+    }
     
 
 
@@ -180,11 +188,11 @@ while (!winner) {
 
                 case "CHAT":
                     if (userRoll <= 10) {
-                        alert(`Well... at least you tried, right? You rolled a ${userRoll}... You try to resonate with the ogre but you unconsciously say something about his mother. He then grabs you and throws you against a tree. 
+                        alert(`Well... at least you tried, right? You rolled a ${userRoll}... As you attempt to connect with the ogre, your words inadvertently veer into a sensitive topic about his mother. The ogre's eyes flare with rage. With a thunderous roar, he seizes you in his massive hands and hurls you against a nearby tree, the impact leaving you dazed and bruised.
                         Your health: ${userHealth -= MAJOR_DAMAGE}/20 -- Ogre's health: ${ogreHealth}/20`);
                         if (userHealth < 0) userHealth = 0; 
                     } else {
-                        alert(`Yes! You rolled a ${userRoll}! You successfully resonate with the ogre that starts crying. You then convince him to follow you to the village where he can express how bad he feels for what he has done. The villagers after hearing what he had to say kill him. RIP.`);
+                        alert(`Yes! You rolled a ${userRoll}! Your words strike a chord with the ogre, and tears begin to stream down his rugged face. Moved by his remorse, you persuade him to accompany you to the village, where he can seek forgiveness for his past actions. However, upon hearing his confession, the villagers, driven by fear and anger, take matters into their own hands and end his life. Rest in peace, fallen ogre.`);
                         ogreHealth = 0;
                     }
                     break;
@@ -196,9 +204,11 @@ while (!winner) {
         }
     } else {
         if (userHealth <= 0) {
-            alert("You died.. sorry!");
+            alert(`The hero's vision blurred, and the world around them began to fade.The hero's sacrifice had not been in vain, for they had weakened the ogre enough for the villagers to rally and drive the beast away. But the hero's journey had come to a tragic end.
+                YOU DIED`);
         } else {
-            alert("Congrats! You defeated the ogre!");
+            alert(`The beast let out a guttural cry before collapsing to the ground, defeated. The hero puts back his sword and made their way back to the village, where celebration awaited. As they entered the village, the hero was met with cheers and applause.The hero smiled, knowing that they had brought peace and safety back to their home. The ogre was no more, and the village could finally rest easy.
+                CONGRATS, YOU WON!`);
         }
         winner = true;
     }
