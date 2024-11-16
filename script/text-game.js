@@ -13,7 +13,7 @@ const characterSheet = (sheet) => {
 }
 
 const isValidAction = (action) => {
-    const validActions = ["ATTACK", "FLEE", "CHAT"];
+    const validActions = ["ATTACK", "HEAL", "FLEE", "CHAT"];
     return validActions.includes(action.toUpperCase())
 }
 
@@ -35,6 +35,13 @@ const sneakAttack = () => {
 
 const cancelGame = (input) => {
     return input === null
+}
+
+const ogreAttack = () => {
+    alert(`Now it's the ogre turn to attack! Prepare thyself!`)
+    rollAndSave();
+    alert(`The ogre rolled a ${userRoll}! He attacks you with his massive club
+        Your health: ${userHealth -= MAJOR_DAMAGE} -- ogre's health: ${ogreHealth}`)
 }
 
 alert(`                                             The titan's fall
@@ -119,7 +126,7 @@ sneakAttack();
 
 while (!winner) {
     if (userHealth > 0 && ogreHealth > 0) {
-        let userAction = prompt(`Type ATTACK, FLEE (to leave the fight) or CHAT (to resonate with the ogre). After each action the dice will roll and we'll see what happens. 
+        let userAction = prompt(`Type ATTACK, HEAL, FLEE (to leave the fight) or CHAT (to resonate with the ogre). After each action the dice will roll and we'll see what happens. 
         Your rolls (most recent first): ${rolls.join(", ")}.
         Your health: ${userHealth} -- ogre's health: ${ogreHealth}`)
 
@@ -143,11 +150,30 @@ while (!winner) {
                     if (userRoll <= 10) {
                         alert(`Well... at least you tried, right? You rolled a ${userRoll}... You charge the ogre, your weapon is gleaming in the dim light. You swing with all your might but just as your sword is about to strike, the ogre sneezes - a massive, earth-shaking sneeze that sends you flying backward. You land on your back, dazed and covered in ogre snot. The ogre looks down at you and says: "Ewww! Did I do that?". He waits for you to go get a shower and get changed, then the fight resumes!    
                         Your health: ${userHealth}/20 -- Ogre's health: ${ogreHealth -= MINOR_DAMAGE}/20`);
-                        if (ogreHealth < 0) ogreHealth = 0; 
+                        ogreAttack();
+                        if (ogreHealth < 0) ogreHealth = 0;
                     } else {
                         alert(`Yes! You rolled a ${userRoll}! You leap into the air, aiming for its head. Your weapon gets the ogre right on his forehead. The ogre stumbles backwards as you grin from ear to ear and shout: "Sorry big guy, but I think it's time to put you to sleep. Go get your safety blanket!" 
                         Your health: ${userHealth}/20 -- Ogre's health: ${ogreHealth -= MINOR_DAMAGE}/20`);
                         if (ogreHealth < 0) ogreHealth = 0;
+                    }
+                    break;
+
+                case "HEAL": 
+                    if (userRoll <= 10) {
+                        alert(`You had full health already... Why do you do this to yourself... You rolled a ${userRoll}... The hero reaches into their sachel in seach of a healing potion. WIth a sigh of relif, the hero pulls out a glowing vial, uncorks it and takes it down in one gulp. Everything starts to burn. The potion they grabbed was not a healing elixir, but a vial of poison meant for the ogre that is grinning while watching you suffer.
+                            Your health: ${userHealth -= MINOR_DAMAGE}/20 -- Ogre's health: ${ogreHealth}/20`)
+                    
+                    } else {
+                        if (userHealth === 20) {
+                            alert(`Congrats, you rolled a ${userRoll}! Unfortunately you can't use it.. Oh you want to know why? CAUSE YOU HAVE FULL HEALTH ALREADY! Let's go back to the fight please. (...amateurs)`)
+                        } else if (userHealth === 19) {
+                            alert(`Yes! You rolled a ${userRoll}... The hero pulls out a vial, its contents glowing with a soothing, golden light and takes it without hesitation.Almost immediately, a warm, comforting sensation spreads through their body, mending wounds and restoring strength. The hero feel rejuvinated! Now.. The battle is far from over, but with their health restored, the hero fights on!
+                                Your health: ${userHealth += 1}/20 -- Ogre's health: ${ogreHealth}/20`)
+                        } else {
+                            alert(`Yes! You rolled a ${userRoll}... The hero pulls out a vial, its contents glowing with a soothing, golden light and takes it without hesitation.Almost immediately, a warm, comforting sensation spreads through their body, mending wounds and restoring strength. The hero feel rejuvinated! Now.. The battle is far from over, but with their health restored, the hero fights on!
+                                Your health: ${userHealth += 2}/20 -- Ogre's health: ${ogreHealth}/20`)
+                        }
                     }
                     break;
 
