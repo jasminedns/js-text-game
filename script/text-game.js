@@ -44,13 +44,11 @@ const ogreAttack = () => {
     if (ogreRoll <= 10) {
         alert(`The ogre, with a roar that could shake mountains, swung its massive club at the hero. But the hero, quick on their feet, deftly dodged the blow. The club smashed into the ground, sending dirt and rocks flying, but the hero remained unscathed, ready to counterattack.
         Your health: ${userHealth}/20 -- ogre's health: ${ogreHealth}/20`)
-        console.log(ogreRoll) ///
 
     } else {
         alert(`The ogre swings his club, sweeping an arc that could clear a forest and hero gets caught by it. The hero on ground lifts up their armor to see a massive purple bruise and whispers: "I really should have stayed in bed today".
             Your health: ${userHealth -= MAJOR_DAMAGE}/20 -- ogre's health: ${ogreHealth}/20`)
             if (userHealth <= 0) zeroHealth(userHealth)
-        console.log(ogreRoll) ///
 
     }
 }
