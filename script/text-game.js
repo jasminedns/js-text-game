@@ -39,9 +39,24 @@ const cancelGame = (input) => {
 
 const ogreAttack = () => {
     alert(`Now it's the ogre turn to attack! Prepare thyself!`)
-    rollAndSave();
-    alert(`The ogre rolled a ${userRoll}! He attacks you with his massive club
-        Your health: ${userHealth -= MAJOR_DAMAGE} -- ogre's health: ${ogreHealth}`)
+    let ogreRoll = Math.floor(Math.random() * 20) + 1;
+
+    if (ogreRoll <= 10) {
+        alert(`The ogre, with a roar that could shake mountains, swung its massive club at the hero. But the hero, quick on their feet, deftly dodged the blow. The club smashed into the ground, sending dirt and rocks flying, but the hero remained unscathed, ready to counterattack.
+        Your health: ${userHealth}/20 -- ogre's health: ${ogreHealth}/20`)
+        console.log(ogreRoll) ///
+
+    } else {
+        alert(`The ogre swings his club, sweeping an arc that could clear a forest and hero gets caught by it. The hero on ground lifts up their armor to see a massive purple bruise and whispers: "I really should have stayed in bed today".
+            Your health: ${userHealth -= MAJOR_DAMAGE}/20 -- ogre's health: ${ogreHealth}/20`)
+            if (userHealth <= 0) zeroHealth(userHealth)
+        console.log(ogreRoll) ///
+
+    }
+}
+
+const zeroHealth = (characterHealth) => {
+    return characterHealth = 0;
 }
 
 alert(`                                             The titan's fall
@@ -128,7 +143,7 @@ while (!winner) {
     if (userHealth > 0 && ogreHealth > 0) {
         let userAction = prompt(`Type ATTACK, HEAL, FLEE (to leave the fight) or CHAT (to resonate with the ogre). After each action the dice will roll and we'll see what happens. 
         Your rolls (most recent first): ${rolls.join(", ")}.
-        Your health: ${userHealth} -- ogre's health: ${ogreHealth}`)
+        Your health: ${userHealth}/20 -- ogre's health: ${ogreHealth}/20`)
 
         if (cancelGame(userAction)) {
             alert(`Well, it looks like our "brave" adventurer has decided to take an early retirement! Perhaps the call of a cozy bed or a warm meal was just too strong to resist. But fear not, the village will still be here when you're ready to return. GAME OVER... for now!`)
@@ -149,21 +164,36 @@ while (!winner) {
                 case "ATTACK":
                     if (userRoll <= 10) {
                         alert(`Well... at least you tried, right? You rolled a ${userRoll}... You charge the ogre, your weapon is gleaming in the dim light. You swing with all your might but just as your sword is about to strike, the ogre sneezes - a massive, earth-shaking sneeze that sends you flying backward. You land on your back, dazed and covered in ogre snot. The ogre looks down at you and says: "Ewww! Did I do that?". He waits for you to go get a shower and get changed, then the fight resumes!    
-                        Your health: ${userHealth}/20 -- Ogre's health: ${ogreHealth -= MINOR_DAMAGE}/20`);
-                        ogreAttack();
-                        if (ogreHealth < 0) ogreHealth = 0;
+                        Your health: ${userHealth -= MINOR_DAMAGE}/20 -- Ogre's health: ${ogreHealth}/20`);
+                        if (userHealth <= 0) zeroHealth(userHealth);
                     } else {
                         alert(`Yes! You rolled a ${userRoll}! You leap into the air, aiming for its head. Your weapon gets the ogre right on his forehead. The ogre stumbles backwards as you grin from ear to ear and shout: "Sorry big guy, but I think it's time to put you to sleep. Go get your safety blanket!" 
-                        Your health: ${userHealth}/20 -- Ogre's health: ${ogreHealth -= MINOR_DAMAGE}/20`);
-                        if (ogreHealth < 0) ogreHealth = 0;
+                        Your health: ${userHealth}/20 -- Ogre's health: ${ogreHealth -= MAJOR_DAMAGE}/20`);
+                        if (ogreHealth <= 0) {
+                            zeroHealth(ogreHealth);
+                        } else {
+                            ogreAttack();
+                        }
                     }
                     break;
 
                 case "HEAL": 
-                    if (userRoll <= 10) {
-                        alert(`You had full health already... Why do you do this to yourself... You rolled a ${userRoll}... The hero reaches into their sachel in seach of a healing potion. WIth a sigh of relif, the hero pulls out a glowing vial, uncorks it and takes it down in one gulp. Everything starts to burn. The potion they grabbed was not a healing elixir, but a vial of poison meant for the ogre that is grinning while watching you suffer.
+                    if (userRoll <= 7) {
+                        if (userHealth === 20) {
+                        alert(`You had full health already... But you know what? Since you're trying to be funny I'll be too and since you rolled a ${userRoll}, funny things are going to happen! 
+                        The hero reaches into their sachel in seach of a healing potion. With a sigh of relif, the hero pulls out a glowing vial, uncorks it and takes it down in one gulp. Everything starts to burn. The potion they grabbed was not a healing elixir, but a vial of poison meant for the ogre that is grinning while watching you suffer.
                             Your health: ${userHealth -= MINOR_DAMAGE}/20 -- Ogre's health: ${ogreHealth}/20`)
+                            if (userHealth <= 0) zeroHealth(userHealth);
+                        } else {
+                            alert(`Let's go! Oh no... You rolled a ${userRoll}... The hero reaches into their sachel in seach of a healing potion. With a sigh of relif, the hero pulls out a glowing vial, uncorks it and takes it down in one gulp. Everything starts to burn. The potion they grabbed was not a healing elixir, but a vial of poison meant for the ogre that is grinning while watching you suffer.
+                            Your health: ${userHealth -= MINOR_DAMAGE}/20 -- Ogre's health: ${ogreHealth}/20`)
+                            if (userHealth <= 0) zeroHealth(userHealth);
+                        }
                     
+                    } else if (userRoll >= 8 && userRoll <= 12) {
+                        alert(`In the heat of battle, the hero reaches into their satchel, intending to grab a healing potion. Instead, their fingers close around a vial of poison. Realizing the mistake just in time, the hero swiftly hurls the vial at the charging ogre. The glass shatters against the ogre's chest, and the toxic liquid splashes over its skin.
+                            Your health: ${userHealth}/20 -- Ogre's health: ${ogreHealth -= MINOR_DAMAGE}/20`)
+                            if (ogreHealth <= 0) zeroHealth(ogreHealth)
                     } else {
                         if (userHealth === 20) {
                             alert(`Congrats, you rolled a ${userRoll}! Unfortunately you can't use it.. Oh you want to know why? CAUSE YOU HAVE FULL HEALTH ALREADY! Let's go back to the fight please. (...amateurs)`)
@@ -181,7 +211,7 @@ while (!winner) {
                     if (userRoll <= 10) {
                         alert(`Well... at least you tried, right? You rolled a ${userRoll}... You start running opposite to the ogre and just as you think you're in the clear, you hear a loud, mocking voice behind you: "Running away already? I thought we were just getting started!". The ogre is now running after you - he's surprisingly fast for its size. You push youself harder, but your foot catches on a loose rock, sending you to the ground. The ogre grabs you by the neck and smashes you to the ground. You sigh and while you draw your weapon once more, you mutter: "Well, it was worth a shot"
                         Your health: ${userHealth -= MAJOR_DAMAGE}/20 -- Ogre's health: ${ogreHealth}/20`);
-                        if (userHealth < 0) userHealth = 0; 
+                        if (userHealth <= 0) zeroHealth(userHealth);
                     } else {
                         alert(`Yes! You rolled a ${userRoll}! As the ogre swings its massive club, you decide that leaving to fight another day sounds like a fantastic idea. You seize the moment and decide to make a run for it. You start running towards the village, dodging trees and leaping over roots. The ogre starts running after you, he's faster than you thought when all of a suddden your hear a female voice that says: "Hey there, big boy". You turn around confused and see a female ogre stepping out from behind a boulder, batting her eyelashes at your pursuer. The male ogre, unprepared, can only say "Uh, hi.. I was just, uh, smashing some pathetic human but I guess I can take a break."
                         Your health: ${userHealth}/20 -- Ogre's health: ${ogreHealth}/20`);
@@ -230,7 +260,7 @@ while (!winner) {
                     if (userRoll <= 10) {
                         alert(`Well... at least you tried, right? You rolled a ${userRoll}... As you attempt to connect with the ogre, your words inadvertently veer into a sensitive topic about his mother. The ogre's eyes flare with rage. With a thunderous roar, he seizes you in his massive hands and hurls you against a nearby tree, the impact leaving you dazed and bruised.
                         Your health: ${userHealth -= MAJOR_DAMAGE}/20 -- Ogre's health: ${ogreHealth}/20`);
-                        if (userHealth < 0) userHealth = 0; 
+                        if (userHealth <= 0) zeroHealth(userHealth);
                     } else {
                         alert(`Yes! You rolled a ${userRoll}! Your words strike a chord with the ogre, and tears begin to stream down his rugged face. Moved by his remorse, you persuade him to accompany you to the village, where he can seek forgiveness for his past actions. However, upon hearing his confession, the villagers, driven by fear and anger, take matters into their own hands and end his life. Rest in peace, fallen ogre.`);
                         alert(`Congrats, you won! (kinda)`)
@@ -244,7 +274,7 @@ while (!winner) {
             }
         }
     } else {
-        if (userHealth = 0) {
+        if (userHealth <= 0) {
             alert(`The hero's vision blurred, and the world around them began to fade.The hero's sacrifice had not been in vain, for they had weakened the ogre enough for the villagers to rally and drive the beast away. But the hero's journey had come to a tragic end.
                 YOU DIED`);
         } else {
