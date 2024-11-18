@@ -24,7 +24,7 @@ const rollAndSave = () => {
 
 const sneakAttack = () => {
     if (userRoll <= 10) {
-        alert(`You rolled a ${userRoll}... You sneak behind the ogre, ready to use your knife and kill him but while you're walking behind him, you step on a tree branch. The ogre hears you, turns around, sees you holding your knife and says: "HAHAHAHAHAHA that's not a knoife", he then grabs his, looks at you and says: "That's a knoife".
+        alert(`You rolled a ${userRoll}... You sneak behind the ogre, ready to use your knife but while you're walking behind him, you step on a tree branch. The ogre hears you, turns around, sees you holding your knife and says: "HAHAHAHAHAHA that's not a knoife", he then grabs his, looks at you and says: "That's a knoife".
         Before you can react, the ogre’s massive knife comes down towards you. You try to dodge, but the knife catches you on the shoulder! You can hear the ogre laughing at you and then he says: "Next time, bring a real knoife mate." 
         The fight starts! Your health: ${userHealth -= MINOR_DAMAGE}/20 -- Ogre's health: ${ogreHealth}/20`)
     } else {
@@ -57,15 +57,15 @@ const zeroHealth = (characterHealth) => {
     return characterHealth = 0;
 }
 
-alert(`                                             The titan's fall
+alert(`                                             The Titan's Fall
     Are you ready to fight and slay the ogre that has been killing people around your town? 
     Here's how it'll work: every time you choose to do something, the computer will roll a 20 sided dice.. Just hope to get 10 or more and you'll be fine.`)
 
 alert(`So... Where were we? Yes... Nestled deep within the ancient Whispering Woods, the village of Timberbrook is a settlement known for its hardworking inhabitants.
-    As I said previously, the village is surrounded by the Whispering Woods: a forest both beautiful and treacherous. Legends say that the deeper one ventures into the woods, the darker and more ominous it becomes.
-    Lately, a sense of dread has settled over Timberbrook. An ogre, known as Druk has taken up residence in a cave not far from the village. He has been terrorizing the villagers, attacking anyone who strays too far from the safety of the village and even venturing into Timberbrook to wreak havoc.`)
+    The village is surrounded by the Whispering Woods: a forest both beautiful and treacherous. Legends say that the deeper one ventures into the woods, the darker and more ominous it becomes.
+    Lately, an ogre, known as Gruk has taken up residence in a cave not far from the village. He has been terrorizing the villagers, attacking anyone who strays too far from the safety of the village.`)
 alert(`The village elder, a wise and respected figure named Elara, has called upon brave adventurers to rid Timberbrook of this menace. You were the chosen one. She decides to tell the village that they have a brave hero ready to slay the monster that has been terrorizing the village.
-    Elara says: “Our beloved village is in grave danger. The ogre has already claimed the lives of several villagers, and his attacks grow bolder by the day. Our hero is ready to venture into the Whispering Woods, find his lair, and put an end to his reign of terror.”`)
+    Elara says: “Our beloved village is in grave danger. The ogre has already claimed the lives of several villagers, and his attacks grow bolder by the day. Our hero is ready to venture into the Whispering Woods and put an end to his reign of terror.”`)
 
     userHero = prompt(`Who do you want to be? Choose your hero!
         ${heroes.join(", ")}`)
@@ -130,8 +130,8 @@ let randomWeapon = Math.floor(Math.random() * weapons.length)
 alert(`You were assigned a ${weapons[randomWeapon]}! Now that everything's set, let's dive into the story!`)
 
 
-alert(`You venture into the forest knowing that your village counts on you and your excellent ability even though you're not too sure of what awaits for you or what you can do to defeat the ogre. 
-    Suddenly, you see him. You see the ogre right outside his cave eating God-knows-what. You decide to strike him suddely, by surprise, in order to have the upper hand. Let's see how it goes... Roll the dice!`)
+alert(`You venture into the forest knowing that your village counts on you even though you're not too sure of what awaits for you or what you can do to defeat the ogre. 
+    Suddenly, you see him. You see the ogre right outside his cave eating God-knows-what. You decide to strike him by surprise in order to have the upper hand. Let's see how it goes... Roll the dice!`)
 
 rollAndSave();
 
@@ -161,7 +161,7 @@ while (!winner) {
             switch (userAction.toUpperCase()) {
                 case "ATTACK":
                     if (userRoll <= 10) {
-                        alert(`Well... at least you tried, right? You rolled a ${userRoll}... You charge the ogre, your weapon is gleaming in the dim light. You swing with all your might but just as your sword is about to strike, the ogre sneezes - a massive, earth-shaking sneeze that sends you flying backward. You land on your back, dazed and covered in ogre snot. The ogre looks down at you and says: "Ewww! Did I do that?". He waits for you to go get a shower and get changed, then the fight resumes!    
+                        alert(`Well... at least you tried, right? You rolled a ${userRoll}... You charge the ogre, your weapon is gleaming in the dim light. You swing it but just as your sword is about to strike, the ogre sneezes - a massive, earth-shaking sneeze that sends you flying backward. You land on your back, covered in ogre snot. The ogre looks down at you and says: "Ewww! Did I do that?". He waits for you to go get a shower and get changed, then the fight resumes!    
                         Your health: ${userHealth -= MINOR_DAMAGE}/20 -- Ogre's health: ${ogreHealth}/20`);
                         if (userHealth <= 0) zeroHealth(userHealth);
                     } else {
@@ -178,12 +178,11 @@ while (!winner) {
                 case "HEAL": 
                     if (userRoll <= 7) {
                         if (userHealth === 20) {
-                        alert(`You had full health already... But you know what? Since you're trying to be funny I'll be too and since you rolled a ${userRoll}, funny things are going to happen! 
-                        The hero reaches into their sachel in seach of a healing potion. With a sigh of relif, the hero pulls out a glowing vial, uncorks it and takes it down in one gulp. Everything starts to burn. The potion they grabbed was not a healing elixir, but a vial of poison meant for the ogre that is grinning while watching you suffer.
+                        alert(`You had full health already... But you know what? Since you're trying to be funny I'll be too and since you rolled a ${userRoll}, bad things are going to happen! The hero reaches into their sachel in seach of a healing potion. With a sigh of relif, the hero pulls out a glowing vial, uncorks it and takes it down in one gulp. Everything starts to burn. The potion they grabbed was not a healing elixir, but a vial of poison meant for the ogre that is grinning while watching you suffer.
                             Your health: ${userHealth -= MINOR_DAMAGE}/20 -- Ogre's health: ${ogreHealth}/20`)
                             if (userHealth <= 0) zeroHealth(userHealth);
                         } else {
-                            alert(`Let's go! Oh no... You rolled a ${userRoll}... The hero reaches into their sachel in seach of a healing potion. With a sigh of relif, the hero pulls out a glowing vial, uncorks it and takes it down in one gulp. Everything starts to burn. The potion they grabbed was not a healing elixir, but a vial of poison meant for the ogre that is grinning while watching you suffer.
+                            alert(`Let's go! Oh no... You rolled a ${userRoll}... The hero reaches into their sachel in seach of a healing potion. With a sigh of relief, the hero pulls out a glowing vial, uncorks it and takes it down in one gulp. Everything starts to burn. The potion they grabbed was not a healing elixir, but a vial of poison meant for the ogre that is grinning while watching you suffer.
                             Your health: ${userHealth -= MINOR_DAMAGE}/20 -- Ogre's health: ${ogreHealth}/20`)
                             if (userHealth <= 0) zeroHealth(userHealth);
                         }
